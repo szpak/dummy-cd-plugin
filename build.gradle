@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'info.solidsoft.gradle:cdeliveryboy:0.3.0'
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.4.0'    //Workaround on Axion compatibility issues with Gradle 3.0
+        classpath 'io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.8.0'  //auto-drop-after-release
         classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
     }
 }
