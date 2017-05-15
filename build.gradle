@@ -83,6 +83,14 @@ modifyPom {
 
 uploadArchives.dependsOn { check }
 
+task('fakePortalUpload') {
+    doLast {
+        println "fakePortalUpload - uploading"
+    }
+    enabled = { ciBuild.enabled }
+}
+ciBuild.dependsOn fakePortalUpload
+
 if (hasProperty('pluginPortal')) {
 
     apply plugin: 'com.gradle.plugin-publish'
