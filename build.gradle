@@ -19,6 +19,9 @@ apply plugin: 'info.solidsoft.cdeliveryboy'
 cDeliveryBoy {
     releaseBranch = "cDeliveryBoy"
     autoPromote = true
+    tasks {
+        promoteRepositoryTask = "promoteRepository"
+    }
 }
 
 group = 'io.gitlab.nexus-at'
