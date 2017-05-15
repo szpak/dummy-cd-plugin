@@ -91,6 +91,7 @@ task('fakePortalUpload') {
         println "fakePortalUpload - uploading"
     }
     enabled = { ciBuild.enabled }
+    dependsOn promoteRepository
 }
 ciBuild.dependsOn fakePortalUpload
 
