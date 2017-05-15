@@ -20,7 +20,7 @@ cDeliveryBoy {
     releaseBranch = "cDeliveryBoy"
     autoPromote = true
     tasks {
-        promoteRepositoryTask = "promoteRepository"
+        promoteRepositoryTask = "releaseRepository"
     }
 }
 
@@ -91,7 +91,7 @@ task('fakePortalUpload') {
         println "fakePortalUpload - uploading"
     }
     enabled = { ciBuild.enabled }
-    dependsOn promoteRepository
+    dependsOn releaseRepository
 }
 ciBuild.dependsOn fakePortalUpload
 
