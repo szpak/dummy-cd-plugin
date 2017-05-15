@@ -10,6 +10,8 @@ before_install:
   - "export TRAVIS_COMMIT_MSG=$(git log --format=%B -n 1 $TRAVIS_COMMIT)"
   - git config user.email "szpak-ci@users.noreply.github.com"
   - git config user.name "Szpak CI Bot"
+  # Chandler for release notes synchronization
+  - gem install chandler
 
 install: true
 script:
