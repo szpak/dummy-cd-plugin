@@ -86,15 +86,6 @@ modifyPom {
 
 uploadArchives.dependsOn { check }
 
-task('fakePortalUpload') {
-    doLast {
-        println "fakePortalUpload - uploading"
-    }
-    onlyIf { ciBuild.isInReleaseMode }
-    mustRunAfter releaseRepository
-}
-ciBuild.dependsOn fakePortalUpload
-
 //Workaround on https://github.com/szpak/CDeliveryBoy/issues/1
 releaseRepository.onlyIf { ciBuild.isInReleaseMode && cDeliveryBoy.autoPromote }
 
@@ -115,4 +106,10 @@ if (hasProperty('pluginPortal')) {
             }
         }
     }
+
+    publishPlugins {
+        onlyIf { ciBuild.isInReleaseMode }
+        mustRunAfter releaseRepository
+    }
+    ciBuild.dependsOn publishPlugins
 }

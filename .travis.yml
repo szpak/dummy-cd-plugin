@@ -13,7 +13,7 @@ before_install:
 
 install: true
 script:
- - ./gradlew prepareForCiBuild -s -i -Prelease.disableChecks && ./gradlew ciBuild -s -i -Prelease.disableChecks -Prelease.customUsername=SEC_TOKEN
+ - ./gradlew prepareForCiBuild -s -i -Prelease.disableChecks && ./gradlew ciBuild -s -i -Prelease.disableChecks -Prelease.customUsername=SEC_TOKEN -PpluginPortal
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
