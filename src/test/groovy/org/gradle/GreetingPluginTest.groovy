@@ -10,7 +10,7 @@ class GreetingPluginTest {
     @Test
     public void greeterPluginAddsGreetingTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        project.pluginManager.apply 'io.gitlab.nexus-at.dummy.cd'
+        project.pluginManager.apply 'io.gitlab.nexus-at.dummy-cd'
 
         assertTrue(project.tasks.hello instanceof GreetingTask)
     }
