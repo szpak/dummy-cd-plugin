@@ -90,10 +90,13 @@ task('fakePortalUpload') {
     doLast {
         println "fakePortalUpload - uploading"
     }
-    enabled = { ciBuild.enabled }
-    dependsOn releaseRepository
+    onlyIf { ciBuild.isInReleaseMode }
+    mustRunAfter releaseRepository
 }
 ciBuild.dependsOn fakePortalUpload
+
+//Workaround on https://github.com/szpak/CDeliveryBoy/issues/1
+releaseRepository.onlyIf { ciBuild.isInReleaseMode && cDeliveryBoy.autoPromote }
 
 if (hasProperty('pluginPortal')) {
 
