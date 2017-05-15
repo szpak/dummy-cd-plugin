@@ -21,7 +21,7 @@ before_cache:
   - rm -fr $HOME/.gradle/caches/*/scripts/
   - rm -fr $HOME/.gradle/caches/*/scripts-remapped/
   - rm -fr $HOME/.gradle/caches/*/fileHashes/
-  - rm -fr $HOME/.gradle/caches/transform-*/transform-*.lock
+  - rm -fr $HOME/.gradle/caches/transforms-*/transforms-*.lock
 cache:
   directories:
     - $HOME/.gradle/caches/
