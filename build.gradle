@@ -11,6 +11,10 @@ buildscript {
         classpath 'info.solidsoft.gradle:cdeliveryboy:0.3.1-SNAPSHOT'
         classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
     }
+    configurations.all {
+        //Check for new SNAPSHOT versions every build
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
 }
 
 apply plugin: 'groovy'
