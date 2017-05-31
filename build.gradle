@@ -86,9 +86,6 @@ modifyPom {
 
 uploadArchives.dependsOn { check }
 
-//Workaround on https://github.com/szpak/CDeliveryBoy/issues/1
-releaseRepository.onlyIf { ciBuild.isInReleaseMode && cDeliveryBoy.autoPromote }
-
 if (hasProperty('pluginPortal')) {
 
     apply plugin: 'com.gradle.plugin-publish'
