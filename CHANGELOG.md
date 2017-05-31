@@ -1,5 +1,25 @@
 # Dummy CD plugin changelog - for testing purpose
 
+## 0.1.16
+
+ - version 0.1.16
+
+## 0.1.15
+
+ - version 0.1.15
+
+## 0.1.14
+
+ - version 0.1.14
+
+## 0.1.13
+
+ - version 0.1.13
+
+## 0.1.12
+
+ - version 0.1.12
+
 ## 0.1.11
 
  - version 0.1.11
