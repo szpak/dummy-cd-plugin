@@ -1,1 +1,5 @@
 rootProject.name = 'dummy-cd-plugin'
+
+if (file('../cdeliveryboy').exists()) {
+    includeBuild('../cdeliveryboy')
+}
