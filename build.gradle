@@ -42,7 +42,7 @@ scmVersion {
 project.group = 'io.gitlab.nexus-at'
 project.version = scmVersion.version
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
