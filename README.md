@@ -11,7 +11,7 @@ Add gradle-nexus-staging-plugin to the `buildscript` dependencies in your build.
             //maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
         }
         dependencies {
-            classpath "io.gitlab.nexus-at:dummy-cd-plugin:0.1.13"
+            classpath "io.gitlab.nexus-at:dummy-cd-plugin:0.1.14"
         }
     }
 
