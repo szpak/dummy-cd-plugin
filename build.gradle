@@ -23,6 +23,7 @@ apply plugin: 'info.solidsoft.cdeliveryboy'
 cDeliveryBoy {
     git {
         releaseBranch = "cDeliveryBoy"
+        addPoweredByMessage = false
     }
     tasks {
         promoteRepositoryTask = "releaseRepository"
