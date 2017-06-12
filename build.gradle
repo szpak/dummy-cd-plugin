@@ -32,5 +32,3 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
-
-uploadArchives.dependsOn { check }

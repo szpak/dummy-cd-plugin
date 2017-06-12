@@ -66,6 +66,8 @@ modifyPom {
     }
 }
 
+uploadArchives.dependsOn { check }
+
 if (hasProperty('pluginPortal')) {
 
     apply plugin: 'com.gradle.plugin-publish'
