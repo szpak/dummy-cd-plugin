@@ -18,30 +18,7 @@ buildscript {
 }
 
 apply plugin: 'groovy'
-apply plugin: 'info.solidsoft.cdeliveryboy'
-
-cDeliveryBoy {
-    git {
-        releaseBranch = "cDeliveryBoy"
-        addPoweredByMessage = false
-    }
-    tasks {
-        promoteRepositoryTask = "releaseRepository"
-    }
-    nexus {
-        autoPromote = true
-    }
-}
-
-scmVersion {
-    hooks {
-        pre 'fileUpdate', [file       : 'README.md', pattern: { v, p -> /"io\.gitlab\.nexus-at:dummy-cd-plugin:.*"/ },
-                           replacement: { v, p -> "\"io.gitlab.nexus-at:dummy-cd-plugin:$v\"" }]
-    }
-}
-
-project.group = 'io.gitlab.nexus-at'
-project.version = scmVersion.version
+apply from: 'gradle/release.gradle'
 
 sourceCompatibility = 1.7
 
@@ -56,86 +33,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-nexusStaging {
-    packageGroup = "io.gitlab.nexus-at"
-}
-
-nexus {
-     sign = !project.hasProperty("skipSigning")
-}
-
-modifyPom {
-    project {
-        name 'Dummy CD plugin'
-        description 'Dummy Gradle plugin for testing Continuous Delivery with CDeliveryBoy plugin'
-        url 'https://github.com/szpak/dummy-cd-plugin/'
-        inceptionYear '2017'
-
-        scm {
-            url 'https://github.com/szpak/dummy-cd-plugin/'
-            connection 'scm:https://github.com/szpak/dummy-cd-plugin.git'
-            developerConnection 'scm:git://github.com/szpak/dummy-cd-plugin.git'
-        }
-
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
-            }
-        }
-
-        developers {
-            developer {
-                id 'szpak'
-                name 'Marcin Zajączkowski'
-                email 'mszpak ATT wp DOTT pl'
-                roles {
-                    role 'developer'
-                    role 'despot'
-                }
-            }
-        }
-    }
-}
-
 uploadArchives.dependsOn { check }
-
-if (hasProperty('pluginPortal')) {
-
-    apply plugin: 'com.gradle.plugin-publish'
-
-    pluginBundle {
-        website = 'https://github.com/szpak/dummy-cd-plugin/'
-        vcsUrl = 'https://github.com/szpak/dummy-cd-plugin/'
-
-        plugins {
-            plugin {
-                id = 'io.gitlab.nexus-at.dummy-cd'
-                displayName = 'dummy-cd-plugin'
-                description = 'Dummy Gradle plugin for testing Continuous Delivery with CDeliveryBoy plugin'
-                tags = ['dummy', 'fake']
-            }
-        }
-    }
-
-    publishPlugins {
-        onlyIf { ciBuild.isInReleaseMode }
-        mustRunAfter releaseRepository
-    }
-    ciBuild.dependsOn publishPlugins
-}
-
-if (hasProperty('changelogSync')) {
-
-    task syncChangelog(type: Exec) {
-        doFirst { logger.info("Synchronizing changelog with GitHub for version ${project.version}") }
-        commandLine 'chandler', 'push', "release/${project.version}", '--tag-prefix=release/'
-    }
-
-    syncChangelog {
-        onlyIf { ciBuild.isInReleaseMode }
-        mustRunAfter releaseRepository, publishPlugins
-    }
-    ciBuild.dependsOn syncChangelog
-}
