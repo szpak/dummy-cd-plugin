@@ -8,7 +8,7 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'info.solidsoft.gradle:cdeliveryboy:0.6.0'
+        classpath 'info.solidsoft.gradle:cdeliveryboy:0.7.0-SNAPSHOT'
         classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
     }
     configurations.all {
