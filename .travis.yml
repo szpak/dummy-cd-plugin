@@ -14,6 +14,7 @@ before_install:
   - gem install chandler
 
 install: true
+before_script: git status
 script:
  - ./gradlew prepareForCiBuild -s -i && ./gradlew ciBuild -s -i -PpluginPortal -PchangelogSync
 
