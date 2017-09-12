@@ -14,6 +14,7 @@ cDeliveryBoy {
 }
 
 scmVersion {
+    versionIncrementer('incrementPatch')
     hooks {
         pre 'fileUpdate', [file       : 'README.md', pattern: { v, p -> /"io\.gitlab\.nexus-at:dummy-cd-plugin:.*"/ },
                            replacement: { v, p -> "\"io.gitlab.nexus-at:dummy-cd-plugin:$v\"" }]
