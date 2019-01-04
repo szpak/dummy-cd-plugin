@@ -9,7 +9,8 @@ buildscript {
     }
     dependencies {
         classpath 'info.solidsoft.gradle:cdeliveryboy:0.8.0'
-        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.12.1-SNAPSHOT"
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.10'
     }
     configurations.all {
         //Check for new SNAPSHOT versions every build
@@ -21,7 +22,7 @@ apply plugin: 'groovy'
 apply plugin: 'java-gradle-plugin'
 apply from: 'gradle/release.gradle'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
