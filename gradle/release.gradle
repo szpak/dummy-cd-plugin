@@ -1,5 +1,5 @@
 apply plugin: 'info.solidsoft.cdeliveryboy'
-apply plugin: 'io.codearte.nexus-upload-staging'
+apply plugin: 'io.codearte.nexus-upload-staging'    //https://github.com/Codearte/gradle-nexus-staging-plugin/issues/76
 
 cDeliveryBoy {
     git {
