@@ -86,11 +86,17 @@ if (hasProperty('pluginPortal')) {
                 description = 'Dummy Gradle plugin for testing Continuous Delivery with CDeliveryBoy plugin'
                 tags = ['dummy', 'fake']
             }
+            plugin2 {
+                id = 'io.gitlab.nexus-at.dummy-cd2'
+                displayName = 'dummy-cd-plugin2'
+                description = 'Dummy Gradle plugin2 for testing Continuous Delivery with CDeliveryBoy plugin'
+                tags = ['dummy', 'fake']
+            }
         }
     }
 
     publishPlugins {
-        onlyIf { ciBuild.isInReleaseMode }
+        onlyIf { ciBuild.inReleaseMode }
         mustRunAfter releaseRepository
     }
     ciBuild.dependsOn publishPlugins
@@ -104,8 +110,11 @@ if (hasProperty('changelogSync')) {
     }
 
     syncChangelog {
-        onlyIf { ciBuild.isInReleaseMode }
-        mustRunAfter releaseRepository, publishPlugins
+        onlyIf { ciBuild.inReleaseMode }
+        mustRunAfter releaseRepository
+        if (project.tasks.findByName("publishPlugins")) {
+            mustRunAfter publishPlugins
+        }
     }
     ciBuild.dependsOn syncChangelog
 }
