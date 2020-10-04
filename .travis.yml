@@ -16,7 +16,6 @@ before_install:
 install: true
 before_script: git status
 script:
-  #TODO: Disable portal upload once to syncronise numbers (after git push failure)
  - ./gradlew prepareForCiBuild -s -i && ./gradlew ciBuild -s -i -PpluginPortal -PchangelogSync
 
 before_cache:
@@ -45,5 +44,6 @@ env:
 
 matrix:
   include:
-    - jdk: oraclejdk8
-#      env: SKIP_RELEASE=true
+    - jdk: openjdk8
+    - jdk: openjdk11
+      env: SKIP_RELEASE=true
