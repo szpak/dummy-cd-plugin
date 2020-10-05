@@ -1,3 +1,5 @@
+os: linux
+dist: xenial
 language: groovy
 
 before_install:
@@ -46,7 +48,7 @@ env:
   # CHANDLER_GITHUB_API_TOKEN
   - secure: INNrHTrfKAdydT2JUsEa/98FSaymR/qdPFSAIwgwWL3GchJKeREQu0tBtdoHOcpZVcQ+2nqx0WnI/WvU2x9U6iuqtIaJjo43S2q3yeTZZKGAJg97bv+uLeC2TVfxVN0SoZSOa5MNcVQJZKrhGVr8ceSmzuZDt6FmkaBxP3ZVKhEce3azmG86W14oemz/kgucsT+mbK4CiyZmlX6O86AfcEovC9jUnTlxsPbpWrb9uHJC6Dx7XLXTqcmAjq9lD3bsuTJ0N0vEaHjnyynSB9IRgi9K3NFcIQudhH8PympmpwWZOUCOrzHuulfhN5IWjym+XUvN7azHKItuYYkFcwTcfZysI2oZ/HnpU+O0Et9JDo8Hz6UOT3+Jpdf1nPG/yV7dq3nFqW3d8B/gwKrxG8xY3moLhZIH6lLgCUpTiuL0e3MJRbdFqUkhp5Das4nBffWx9J2gDgqJxxDTww5SMrYc6WiL0YiVgH/QMOKczk52SmVdilKnW1hwBgYUqT+bADHKA0zjbQ9m0PT4o0MKH7ckgJXN4OmoCtmrlarhkr7dCTrwTop9HzPSTgrCGXt4FXe0KS3TRUoLT88MLq6W2YFARPtjbSiRyPn9QYlU9+1HwFGJuw1KEPKqHrloNzEyXmJVhnzZkQjY/yiLwyNPtBQ0Edqp30GRQvcyBtpF60JCCKY=
 
-matrix:
+jobs:
   include:
     - jdk: openjdk8
     - jdk: openjdk11
